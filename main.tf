@@ -1,4 +1,12 @@
+variable "AWS_CONFIG_PATH" {
+  type = string
+}
+
+variable "AWS_CREDENTIALS_PATH" {
+  type = string
+}
 terraform {
+
   required_providers {
 
     aws = {
@@ -11,8 +19,8 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region                   = "us-east-1"
-  shared_config_files      = ["/Users/boverbey/.aws/config"]
-  shared_credentials_files = ["/Users/boverbey/.aws/credentials"]
+  shared_config_files      = [var.AWS_CONFIG_PATH]
+  shared_credentials_files = [var.AWS_CREDENTIALS_PATH]
 }
 
 # Create a VPC
